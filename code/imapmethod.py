@@ -6,14 +6,13 @@ import time
 import json
 import os
 
-# 配置
+# Setup
 EMAIL = "bulelance9@gmail.com"
 APP_PASSWORD = "sijboclwckmsinek"
 IMAP_SERVER = "imap.gmail.com"
-OUTPUT_FOLDER = "./mail_json"
-# 记录已经保存过的邮件id，防止重复写入
-saved_ids = set()
+OUTPUT_FOLDER = "./mail_json"  # Folder to save the JSON files
 
+# Create the output folder if it doesn't exist
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 def stable_hash(msg, subj, from_, date_, body):
@@ -44,7 +43,7 @@ def get_all_mail():
         res, msg_data = mail.fetch(mail_id, "(BODY.PEEK[])")
         msg = email.message_from_bytes(msg_data[0][1])
 
-        # 解码主题
+        # Decode the email subject
         subject_parts = decode_header(msg["Subject"])
         subj = ""
         for part, enc in subject_parts:
@@ -53,9 +52,12 @@ def get_all_mail():
             else:
                 subj += part
 
+        # Get the sender's email address
         from_ = msg.get("From", "")
+        # Get the date of the email
         date_ = msg.get("Date", "")
 
+        # Get the email body (only the first text/plain part)
         body = ""
         if msg.is_multipart():
             for part in msg.walk():
@@ -74,8 +76,8 @@ def get_all_mail():
         }
         result.append(mail_item)
 
-        hashcode = stable_hash(msg, subj, from_, date_, body)
-        filename = f"{hashcode}.json"
+        # Write to a separate JSON file, named with time + mail_id to avoid duplicates
+        filename = f"{time.time()}_{mail_id.decode()}.json"
         file_path = os.path.join(OUTPUT_FOLDER, filename)
         if not os.path.exists(file_path):
             with open(file_path, "w", encoding="utf-8") as f:
@@ -84,17 +86,20 @@ def get_all_mail():
         else:
             print("已存在，跳过：", mid, subj)
 
-        saved_ids.add(mid)
+        # Mark the email as read
+        mail.store(mail_id, '+FLAGS', '\\Seen')
 
     mail.close()
     mail.logout()
     return result
 
-# 轮询
+# Polling: Check every 60 seconds
 while True:
-    print("=== 扫描全部邮件 ===")
+    print("=== Polling The Inbox ===")
     try:
-        get_all_mail()
+        mails = get_unread_imap()
+        for m in mails:
+            print("New email saved:", m["subject"])
     except Exception as e:
-        print("出错：", e)
-    time.sleep(300)
+        print("Error:", e)
+    time.sleep(60)
