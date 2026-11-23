@@ -72,7 +72,7 @@ def get_unread_imap():
 
 # Polling: Check every 60 seconds
 while True:
-    print("=== Polling The Inbox ===")
+    print(f"=== Polling The Inbox ({time.ctime()}) ===")
     try:
         mails = get_unread_imap()
         for m in mails:
