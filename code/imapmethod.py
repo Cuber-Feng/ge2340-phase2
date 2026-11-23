@@ -5,13 +5,13 @@ import time
 import json
 import os
 
-# 配置
+# Setup
 EMAIL = "bulelance9@gmail.com"
 APP_PASSWORD = "sijboclwckmsinek"
 IMAP_SERVER = "imap.gmail.com"
-OUTPUT_FOLDER = "./mail_json"  # 输出json的文件夹
+OUTPUT_FOLDER = "./mail_json"  # Folder to save the JSON files
 
-# 文件夹不存在就自动创建
+# Create the output folder if it doesn't exist
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 def get_unread_imap():
@@ -25,7 +25,7 @@ def get_unread_imap():
         res, msg_data = mail.fetch(mail_id, "(RFC822)")
         msg = email.message_from_bytes(msg_data[0][1])
 
-        # 解码主题（修复多段标题报错）
+        # Decode the email subject
         subject_parts = decode_header(msg["Subject"])
         subj = ""
         for part, enc in subject_parts:
@@ -34,12 +34,12 @@ def get_unread_imap():
             else:
                 subj += part
 
-        # 提取发件人
+        # Get the sender's email address
         from_ = msg.get("From", "")
-        # 提取时间
+        # Get the date of the email
         date_ = msg.get("Date", "")
 
-        # 拿正文
+        # Get the email body (only the first text/plain part)
         body = ""
         if msg.is_multipart():
             for part in msg.walk():
@@ -57,26 +57,26 @@ def get_unread_imap():
         }
         result.append(mail_item)
 
-        # 写入单独json文件，用时间+邮件id命名，避免重名
+        # Write to a separate JSON file, named with time + mail_id to avoid duplicates
         filename = f"{time.time()}_{mail_id.decode()}.json"
         file_path = os.path.join(OUTPUT_FOLDER, filename)
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(mail_item, f, ensure_ascii=False, indent=2)
 
-        # 标记已读，防止重复抓取
+        # Mark the email as read
         mail.store(mail_id, '+FLAGS', '\\Seen')
 
     mail.close()
     mail.logout()
     return result
 
-# 轮询循环：每300秒(5分钟)查一次
+# Polling: Check every 60 seconds
 while True:
-    print("=== 轮询收件箱 ===")
+    print("=== Polling The Inbox ===")
     try:
         mails = get_unread_imap()
         for m in mails:
-            print("已保存新邮件：", m["subject"])
+            print("New email saved:", m["subject"])
     except Exception as e:
-        print("出错：", e)
+        print("Error:", e)
     time.sleep(60)
