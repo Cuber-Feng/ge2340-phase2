@@ -1,0 +1,129 @@
+% ======================= COMPILATION NOTICE =======================
+% Before compiling, place ge2340_project.sty and all three template
+% files (phase1_template.tex, phase2_template.tex, and
+% contribution_template.tex) in the same directory.
+% Keep the style file named ge2340_project.sty so that the templates
+% can load it correctly.
+% ==================================================================
+
+\documentclass{article}
+
+% ======================= REQUIRED STYLE =======================
+\PassOptionsToPackage{numbers}{natbib}
+\usepackage[preprint]{ge2340_project}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{xcolor}
+% \usepackage{tabularx}
+
+% ======================== ASSIGNMENT CONSTRAINTS ========================
+% Phase 1 is GROUP WORK. Each group has 3--4 students.
+% The proposal must be in English and submitted as a PDF.
+% The complete PDF must not exceed 2 pages, including figures and references.
+% Do NOT rename, remove, or reorder the required section titles below.
+% Replace only the bracketed placeholders and remove instructional text before submission.
+% =======================================================================
+
+\title{Phase 1: AI Project Proposal\\
+\large Email Content Summarization \& Scheduler}
+
+% Use the fourth author block only for a four-member group.
+\author{
+  FENG Yuxiang (Student ID: 58520850)\\
+  \texttt{yuxiafeng2-c@my.cityu.edu.hk}
+  \And 
+  SOETANTO Darrel Edbert (Student ID: 58586617)\\
+  \texttt{dsoetanto2-c@my.cityu.edu.hk}
+  \AND
+  CHEN Lehan (Student ID: 58520456)\\
+  \texttt{lehanchen2-c@my.cityu.edu.hk}
+  \And
+  TANG Shun Chong Adrian (Student ID: 60313420)\\
+  \texttt{adriatang6-c@my.cityu.edu.hk}
+}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Project topic:} Students struggle to check their emails and schedule their event.\\
+\textbf{Target users/stakeholders:} University students who receive a large amount of emails everyday.
+
+% ======================= Required sections (do NOT rename) =======================
+
+\section{Problem Definition \& Scope}
+\subsection{Problem}
+
+The university students will receive a large volume of emails everyday, which contains assignment / quiz / exam announcement, event invitation, security alert, bank statement notification, promotion, etc. Spending time on checking these emails can be annoying. And the performance of filter function by email apps like Gmail and Outlook is not good enough. After checking these emails, make it to the schedule can also be another issues to the university students.
+
+\subsection{Scope}
+
+The project will contains classification of the emails, summarize an email from paragraph form to bullet-point form, integrate different emails to generate a schedule. But we will make an agent to help users to write emails.
+
+\section{AI Task Formulation}
+
+The inputs is the email contents, and the output will be the summary (category, bullet-points, etc.) of each email, the schedule created by the AI. As the project is highly related to the campus and student life, it should have a better performance on the typical emails which students receives. To evaluate the performance, we can apply the precision, recall and other measurement to find the difference of performance between different solutions.
+
+\section{Proposed AI Approaches}
+
+\subsection{AI Agent}
+  build an agent with several tools, including a email reader, summarizer, report generator and scheduler.  And the task can be timely triggered by the agent based on the email content.
+
+\subsection{Reinforcement Learning}
+  The agent will treat the received emails as a environment and learn to take actions based on the user feedback.
+
+\subsection{Naive Bayes}
+  Use a naive bayes classifier to classify the emails into different categories based on the words frequence and the context of the email. The classifier will first be trained on a labeled dataset of emails and then used to classify new emails.
+
+\subsection{Decision Tree}
+  Use a decision tree classifier to classify the emails into different categories based on the words frequence and the context of the email. The classifier will first be trained on a labeled dataset of emails and then used to classify new emails.
+\subsection{Hard-Code Rule-based Pipeline}
+  Just detecting the class of the rules by predefined rules.
+
+\section{Comparative Analysis}
+A compact comparison table is encouraged when it saves space.
+\begin{table}[ht]
+\small
+\centering
+\setlength{\tabcolsep}{4pt}
+\caption{Comparison of candidate AI approaches.}\label{tab:approach-comparison}
+\begin{tabular}{l p{4.2cm} p{4.2cm}}
+\toprule
+Approach & Expected benefit & Main limitation \\
+\midrule
+AI Agent & Multi-step email processing & Complex integration, error propagation \\
+Reinforcement Learning & Learns personalised preferences & Slow training, high data demand \\
+Naive Bayes & Fast lightweight text classification & Poor context understanding, not for summarisation \\
+Decision Tree & Interpretable classification rules & Easy overfitting, weak on new expressions \\
+Rule-based pipeline & No training, fully interpretable & Fragile for informal unseen text \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\section{Expected Impact \& Project Feasibility}
+If the project is successful, it will help students to manage their time more efficiently and reduce the time spent on checking emails. It can also detecting the phishing and spam emails to avoid potential harm.This project combine the email summarization and the schedule generation, which is very novel and useful.The data need is the email content and the user feedback, which is easy to collect. We plan to let user install the agent application and collect data after the user permission. Other pre-trained model will be trained based on the open-source dataset. The project is feasible and can be completed within the time frame. The biggest risk is the user privacy, but we will not collect any personal information if the user provides consent.
+
+
+% ======================= References (included in page limit) =======================
+% Cite sources in the text and replace the sample entry below.
+% \begin{thebibliography}{9}
+% \small  
+% \bibitem{sample}
+% Lance Le, ``A Sample Title,'' \emph{A sample journal}, 2023.
+
+% \bibitem{citekey} 
+% Author Maple, ``Rubik's Cube Methods,'' \emph{Journal of Cube}, 2021.
+% \end{thebibliography}
+
+% Course policy reminder: LLMs may be used to refine and polish writing,
+% but may not be used to generate the submission text from scratch.
+
+\end{document}
