@@ -114,9 +114,10 @@ if False:
     print(report)
 
 def main():
-    folder_path = r"code/mail_json"
+    folder_path = r"mail_json"
     
     result = {}
+    print('start scanning folder:', folder_path)
     # 遍历文件夹里面所有文件
     for filename in os.listdir(folder_path):
         # 只处理后缀是 .json 的文件

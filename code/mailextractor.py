@@ -11,7 +11,7 @@ EMAIL = "bulelance9@gmail.com"
 APP_PASSWORD = "sijboclwckmsinek"
 IMAP_SERVER = "imap.gmail.com"
 OUTPUT_FOLDER = "./mail_json"
-INDEX_PATH = os.path.join(OUTPUT_FOLDER, "_saved_uids.json")
+INDEX_PATH = r"./saved_uids.json"
 
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
