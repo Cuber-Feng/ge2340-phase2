@@ -1,0 +1,81 @@
+k=2
+加载样本：31665
+加载样本：2000
+正在提取embedding...
+Epoch  0 | Train Loss: 0.6921
+Epoch  5 | Train Loss: 0.6743
+Epoch 10 | Train Loss: 0.6370
+Epoch 15 | Train Loss: 0.5742
+Epoch 20 | Train Loss: 0.4849
+Epoch 25 | Train Loss: 0.3743
+
+===== Test Classification Report =====
+              precision    recall  f1-score   support
+
+      Normal       0.95      0.95      0.95       992
+        Spam       0.95      0.95      0.95      1008
+
+    accuracy                           0.95      2000
+   macro avg       0.95      0.95      0.95      2000
+weighted avg       0.95      0.95      0.95      2000
+
+k=4
+Epoch  0 | Train Loss: 0.6936
+Epoch  5 | Train Loss: 0.6893
+Epoch 10 | Train Loss: 0.6678
+Epoch 15 | Train Loss: 0.6066
+Epoch 20 | Train Loss: 0.4827
+Epoch 25 | Train Loss: 0.2750
+
+===== Test Classification Report =====
+              precision    recall  f1-score   support
+
+      Normal       0.97      0.95      0.96       992
+        Spam       0.95      0.97      0.96      1008
+
+    accuracy                           0.96      2000
+   macro avg       0.96      0.96      0.96      2000
+weighted avg       0.96      0.96      0.96      2000
+
+k=6
+加载样本：31665
+加载样本：2000
+正在提取embedding...
+Epoch  0 | Train Loss: 0.6936
+Epoch  5 | Train Loss: 0.6912
+Epoch 10 | Train Loss: 0.6728
+Epoch 15 | Train Loss: 0.5945
+Epoch 20 | Train Loss: 0.4212
+Epoch 25 | Train Loss: 0.3017
+
+===== Test Classification Report =====
+              precision    recall  f1-score   support
+
+      Normal       0.93      0.98      0.96       992
+        Spam       0.98      0.93      0.95      1008
+
+    accuracy                           0.95      2000
+   macro avg       0.96      0.96      0.95      2000
+weighted avg       0.96      0.95      0.95      2000
+
+k=8
+加载样本：31665
+加载样本：2000
+正在提取embedding...
+Epoch  0 | Train Loss: 0.6933
+Epoch  5 | Train Loss: 0.6927
+Epoch 10 | Train Loss: 0.6867
+Epoch 15 | Train Loss: 0.6446
+Epoch 20 | Train Loss: 0.4907
+Epoch 25 | Train Loss: 0.3441
+
+===== Test Classification Report =====
+              precision    recall  f1-score   support
+
+      Normal       0.92      0.99      0.95       992
+        Spam       0.99      0.91      0.95      1008
+
+    accuracy                           0.95      2000
+   macro avg       0.95      0.95      0.95      2000
+weighted avg       0.95      0.95      0.95      2000
+

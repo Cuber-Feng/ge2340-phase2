@@ -24,4 +24,5 @@
 .vscode/
 .DS_Store
 *archive/
-
+*.pt
+code/method3nn&encoder/models/spam_mlp_k2_hd128_dr0.2.pt
