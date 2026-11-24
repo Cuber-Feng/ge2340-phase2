@@ -79,3 +79,24 @@ Epoch 25 | Train Loss: 0.3441
    macro avg       0.95      0.95      0.95      2000
 weighted avg       0.95      0.95      0.95      2000
 
+k=16
+加载样本：31665
+加载样本：2000
+正在提取embedding...
+Epoch  0 | Train Loss: 0.6944
+Epoch  5 | Train Loss: 0.6930
+Epoch 10 | Train Loss: 0.6931
+Epoch 15 | Train Loss: 0.6930
+Epoch 20 | Train Loss: 0.6931
+Epoch 25 | Train Loss: 0.6931
+
+===== Test Classification Report =====
+              precision    recall  f1-score   support
+
+      Normal       0.00      0.00      0.00       992
+        Spam       0.50      1.00      0.67      1008
+
+    accuracy                           0.50      2000
+   macro avg       0.25      0.50      0.34      2000
+weighted avg       0.25      0.50      0.34      2000
+
