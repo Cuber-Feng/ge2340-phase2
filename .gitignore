@@ -22,3 +22,6 @@
 *.ilg
 *.ind
 .vscode/
+.DS_Store
+*archive/
+
