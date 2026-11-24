@@ -1,0 +1,13 @@
+训练向量库 shape: torch.Size([31716, 5000])
+开始测试，限制前5000条数据
+
+K=5 | Test Accuracy: 0.9745
+              precision    recall  f1-score   support
+
+         ham       0.98      0.97      0.97       992
+        spam       0.97      0.98      0.97      1008
+
+    accuracy                           0.97      2000
+   macro avg       0.97      0.97      0.97      2000
+weighted avg       0.97      0.97      0.97      2000
+
