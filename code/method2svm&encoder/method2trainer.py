@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
 # ---------------------- 配置 ----------------------
-train_jsonl_path = r"./code/method2svm&encoder/train.jsonl"    # 你的jsonl文件
-test_jsonl_path = r"./code/method2svm&encoder/test.jsonl"
+train_jsonl_path = r"./code/method2svm&encoder/data/train.jsonl"    # 你的jsonl文件
+test_jsonl_path = r"./code/method2svm&encoder/data/test.jsonl"
 emb_model_name = "all-MiniLM-L6-v2"
 svm_save_path = "./code/method2svm&encoder/spam_svm.joblib"
 text_key = "text"    # 你json里面文本的字段名，不对就改
