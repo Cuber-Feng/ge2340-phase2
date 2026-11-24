@@ -134,7 +134,7 @@ def main():
             pred = knn_predict_one(text_vector, train_vecs, train_labels, 5).item()
             
             result[filename] = pred
-            print("mail_id:",data['mail_id'], "pred:", pred)
+            print("uid:",data['uid'], "pred:", pred)
             # if result[filename] == 1:
             #     print(data)
 
